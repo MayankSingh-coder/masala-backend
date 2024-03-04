@@ -12,26 +12,26 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "food")
 public class Food {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String description;
     private Long price;
-    @ManyToOne
-    private Catagory foodCatagory;
-    @Column(length = 1000)
-    @ElementCollection
-    List<String> images;
+//    @ManyToOne
+//    private Catagory foodCatagory;
+//    @Column(length = 1000)
+//    @ElementCollection
+//    List<String> images = new ArrayList<>();
     private Boolean available;
-    @ManyToOne
-    private Restaurants restaurants;
+//    @ManyToOne
+//    private Restaurants restaurants;
     private Boolean isVegeterian;
     private Boolean isSeasonable;
-    @ManyToMany
-    private List<Ingredients> ingredients = new ArrayList<>();
-    private Date createdAt;
-    private Date updatedAt;
-}
+//    @ManyToMany
+//    private List<Ingredients> ingredients = new ArrayList<>();
+//    private Date createdAt;
+ }

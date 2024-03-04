@@ -1,22 +1,26 @@
 package com.masala.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Catagory {
+public class Cart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
-    @ManyToOne
-    @JsonIgnore
-    private Restaurants restaurants;
+    @OneToOne
+    private User customer;
+    @OneToMany(mappedBy = "cart",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<CartItem> cartItems = new ArrayList<>();
+    private Long total;
+
 }

@@ -17,7 +17,7 @@ import java.util.List;
 public class Restaurants {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne
     private User owner;
@@ -34,7 +34,7 @@ public class Restaurants {
     private List<String> images;
     private LocalDateTime registrationDate;
     private Boolean isOpen;
-    @JsonIgnore
-    @OneToMany(mappedBy = "restaurants",cascade = CascadeType.ALL)
-    private List<Food> foods = new ArrayList<>();
+//    @JsonIgnore
+//    @OneToMany
+//    private List<Food> foods = new ArrayList<>();
 }
