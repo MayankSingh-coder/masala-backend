@@ -17,17 +17,16 @@ public class JwtProvider {
     public String generrateToken(Authentication authentication) {
 
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-        String roles = populateAuthrities(authorities);
-        String jwt = Jwts.builder().setIssuedAt(new Date())
+        String roles = populateAuthorities(authorities);
+        return Jwts.builder().setIssuedAt(new Date())
                 .setExpiration(new Date(new Date().getTime()+86400000))
                 .claim("email",authentication.getName())
                 .claim("authorities",roles)
                 .signWith(secretKey)
                 .compact();
-        return jwt;
     }
 
-    private String populateAuthrities(Collection<? extends GrantedAuthority> authorities) {
+    private String populateAuthorities(Collection<? extends GrantedAuthority> authorities) {
 
         Set<String> auths = new HashSet<>();
 

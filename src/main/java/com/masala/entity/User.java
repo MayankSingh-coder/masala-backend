@@ -1,6 +1,7 @@
 package com.masala.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.masala.enums.UserRoles;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,7 +23,9 @@ public class User {
     private Long id;
     private String fullName;
     private String email;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
+    @JsonIgnore
     private UserRoles role;
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "customer")
